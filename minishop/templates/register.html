@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+<section class="vh-100" style="background-color: #6a11cb;">
+  <div class="container h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-lg-8 col-xl-6">
+        <div class="card text-black" style="border-radius: 25px;">
+          <div class="card-body p-md-5">
+            <div class="row justify-content-center">
+              <div class="col-md-10">
+
+                <p class="text-center h1 fw-bold mb-5">Sign up</p>
+                  {% for i in messages %}
+              <h4 style="color:red; font-size: 15px;" >{{i}}</h4>
+              {% endfor %}
+
+                <form class="mx-4" method="post" action="register">
+                 {% csrf_token %}>
+                  <div class="mb-4">
+                    <div class="input-group">
+                      <span class="input-group-text"><i class="fas fa-user fa-lg fa-fw"></i></span>
+                      <input type="text" class="form-control" name="first_name" placeholder="First Name">
+                    </div>
+                  </div>
+                          <div class="mb-4">
+                    <div class="input-group">
+                      <span class="input-group-text"><i class="fas fa-user fa-lg fa-fw"></i></span>
+                      <input type="text" class="form-control" name="last_name" placeholder="Last Name">
+                    </div>
+                  </div>
+
+                    <div class="mb-4">
+                    <div class="input-group">
+                      <span class="input-group-text"><i class="fas fa-user fa-lg fa-fw"></i></span>
+                      <input type="text" class="form-control" name="username" placeholder="User Name">
+                    </div>
+                  </div>
+
+
+                  <!-- Repeat the above block for Last Name, Username, Email, Password, and Repeat Password fields -->
+
+                  <div class="mb-4">
+                    <div class="input-group">
+                      <span class="input-group-text"><i class="fas fa-envelope fa-lg fa-fw"></i></span>
+                      <input type="email" class="form-control" name="email" placeholder="Your Email">
+                    </div>
+                  </div>
+
+                  <div class="mb-4">
+                    <div class="input-group">
+                      <span class="input-group-text"><i class="fas fa-lock fa-lg fa-fw"></i></span>
+                      <input type="password" class="form-control" name="password1" placeholder="Password">
+                    </div>
+                  </div>
+
+                  <div class="mb-4">
+                    <div class="input-group">
+                      <span class="input-group-text"><i class="fas fa-key fa-lg fa-fw"></i></span>
+                      <input type="password" class="form-control" name="password2" placeholder="Repeat Password">
+                    </div>
+                  </div>
+
+                  <div class="form-check d-flex justify-content-center mb-4">
+                    <input class="form-check-input me-2" type="checkbox" value="" id="termsCheckbox">
+                    <label class="form-check-label" for="termsCheckbox">
+                      I agree to all statements in <a href="https://example.com/terms">Terms of service</a>
+                    </label>
+                  </div>
+
+                  <div class="d-grid gap-2">
+                    <button type="submit" class="btn btn-primary btn-lg">Register</button>
+                  </div>
+                </form>
+
+
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>
+{% endblock %}

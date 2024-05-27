@@ -1,0 +1,115 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content%}
+
+
+    <style>
+
+
+        .container-py {
+            background-color: #fff;
+            padding: 65px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 5000px;
+            width: 100%;
+            text-align: center;
+        }
+        .container h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+        }
+        .form-group input {
+            width: calc(100% - 10px);
+            padding: 8px 5px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        .form-group .half-width {
+            width: calc(50% - 10px);
+            display: inline-block;
+            margin-right: 5px;
+        }
+        .form-group .half-width:last-child {
+            margin-right: 0;
+        }
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            color: #fff;
+            background-color: #007bff;
+            border-radius: 5px;
+            text-decoration: none;
+            margin-top: 20px;
+        }
+        .button:hover {
+            background-color: #0056b3;
+        }
+        .status {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+        .success {
+            color: #28a745;
+        }
+        .failure {
+            color: #dc3545;
+        }
+    </style>
+
+    <div class="container-py">
+        <h1>Payment Information</h1>
+        <form id="paymentForm">
+            <div class="form-group">
+                <label for="name">Name on Card</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="accountNumber">Account Number</label>
+                <input type="text" id="accountNumber" name="accountNumber" required>
+            </div>
+            <div class="form-group">
+                <label for="expiryMonth">Expiry Month</label>
+                <input type="text" id="expiryMonth" name="expiryMonth" class="half-width" placeholder="MM" required>
+                <label for="expiryYear">Expiry Year</label>
+                <input type="text" id="expiryYear" name="expiryYear" class="half-width" placeholder="YY" required>
+            </div>
+            <div class="form-group">
+                <label for="cvv">CVV</label>
+                <input type="text" id="cvv" name="cvv" required>
+            </div>
+            <button type="submit" class="button">Submit Payment</button>
+        </form>
+        <div id="paymentStatus" class="status" style="display: none;"></div>
+    </div>
+    <script>
+        document.getElementById('paymentForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            // Simulate payment processing
+            const statusDiv = document.getElementById('paymentStatus');
+            statusDiv.style.display = 'block';
+            const success = Math.random() > 0.5; // Random success/failure simulation
+            if (success) {
+                statusDiv.textContent = 'Your payment was successful!';
+                statusDiv.classList.add('success');
+                statusDiv.classList.remove('failure');
+            } else {
+                statusDiv.textContent = 'Your payment failed. Please try again.';
+                statusDiv.classList.add('failure');
+                statusDiv.classList.remove('success');
+            }
+        });
+    </script>
+
+{% endblock %}
